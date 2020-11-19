@@ -1,0 +1,33 @@
+{
+  "name": "keyster",
+  "version": "1.0.0",
+  "description": "Software Keyboard",
+  "main": "index.js",
+  "scripts": {
+    "inspect": "parcel inspector/index.html",
+    "test": "mocha -r ts-node/register test/**/*.test.ts"
+  },
+  "author": "Charles Lowell <cowboyd@frontside.io>",
+  "license": "ISC",
+  "devDependencies": {
+    "@frontside/tsconfig": "^1.1.0",
+    "@frontside/typescript": "^1.1.0",
+    "@types/mocha": "^8.0.4",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
+    "@types/react-inspector": "^4.0.1",
+    "mocha": "^8.2.1",
+    "parcel": "^2.0.0-beta.1",
+    "react": "^16.0.1",
+    "react-dom": "^16.0.1",
+    "react-inspector": "^5.1.0",
+    "react-json-tree": "^0.13.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "@bigtest/atom": "^0.10.0",
+    "@effection/subscription": "^0.11.1",
+    "effection": "^0.7.0"
+  }
+}

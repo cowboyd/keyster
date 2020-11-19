@@ -1,0 +1,21 @@
+html {
+  height: 100%;
+}
+h1,h2,h3,h4,h5,h6 {
+  padding: 0;
+  margin: 0;
+}
+#app-element {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+section#filters {
+  border-right: 1px solid black;
+  padding-right: 1em;
+}
+
+section#filters h2 {
+  border-bottom: 1px solid black;
+}

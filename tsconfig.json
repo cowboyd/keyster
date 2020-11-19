@@ -1,0 +1,7 @@
+{
+  "extends": "@frontside/tsconfig",
+  "include": ["inspector/**/*.tsx"],
+  "compilerOptions": {
+    "jsx": "react"
+  }
+}
