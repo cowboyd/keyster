@@ -19,3 +19,8 @@ section#filters {
 section#filters h2 {
   border-bottom: 1px solid black;
 }
+
+section#events {
+  border-right: 1px solid black;
+  width: 10em;
+}
