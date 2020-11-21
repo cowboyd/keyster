@@ -9,18 +9,31 @@ type State = {
     keydown: boolean;
     keyup: boolean;
     keypress: boolean;
+    input: boolean;
+    change: boolean;
+    focus: boolean;
   },
   events: Event[];
 };
 
 
 function createDefaultAtom() {
+  let defaultFilters = {
+    keydown: true,
+    keyup: false,
+    keypress: false,
+    input: true,
+    change: true,
+    focus: true
+  };
+
+  let stored = localStorage.getItem('keyster/filters')
+  let filters = stored ?
+                {...defaultFilters, ...JSON.parse(stored)} :
+                defaultFilters;
+
   return new Atom<State>({
-    filters: {
-      keydown: true,
-      keyup: false,
-      keypress: false
-    },
+    filters,
     events: []
   });
 }
@@ -42,6 +55,13 @@ export function useAtom() {
 
 export function AtomProvider({ children }) {
   let atom = useMemo(() => createDefaultAtom());
+
+  useOperation(function*() {
+    yield subscribe(atom.slice('filters')).forEach(function(state) {
+      localStorage.setItem('keyster/filters', JSON.stringify(state));
+    })
+  })
+
   return <AtomContext.Provider value={atom}>{children}</AtomContext.Provider>;
 }
 

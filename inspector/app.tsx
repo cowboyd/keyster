@@ -5,24 +5,7 @@ import { spawn } from 'effection';
 import { on } from '@effection/events';
 import { subscribe } from '@effection/subscription';
 
-/* /* function getInitialFilters(): Record<string, boolean> {
- *  *   let storedFilters = localStorage.getItem('keyster/filters');
- *  *   if (storedFilters) {
- *  *     return JSON.parse(storedFilters);
- *  *   } else {
- *  *     return {
- *  *       keydown: true,
- *  *       keyup: true,
- *  *       keypress: false
- *  *     };
- *  *   }
- *  * }
- *  *
- *  * function setInitialFilters(value: Record<string, boolean>): void {
- *  *   localStorage.setItem('keyster/filters', JSON.stringify(value));
- *  * } */
-
-function EventTypeFilter({ eventName }: {eventName: string; }) {
+function EventFilter({ eventName }: {eventName: string; }) {
   let [checked, slice] = useSlice<boolean>('filters', eventName);
 
   return (
@@ -41,9 +24,12 @@ function Home() {
     <>
       <section id="filters">
         <h2>Filters</h2>
-        <EventTypeFilter eventName={"keydown"} />
-        <EventTypeFilter eventName={"keyup"} />
-        <EventTypeFilter eventName={"keypress"} />
+        <EventFilter eventName={"keydown"} />
+        <EventFilter eventName={"keyup"} />
+        <EventFilter eventName={"keypress"} />
+        <EventFilter eventName={"input"} />
+        <EventFilter eventName={"change"} />
+        <EventFilter eventName={"focus"} />
       </section>
       <section id="events">
         <h2>Events</h2>
