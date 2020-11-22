@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom' ;
 
 import { useSlice } from './hooks';
 import { EventFilter } from './event-filter';
+import { EventItems } from './event-item';
 
 export function Home() {
   let [events] = useSlice<Event[]>('events');
@@ -22,11 +23,11 @@ export function Home() {
       </section>
       <section id="events">
         <h2>Events</h2>
+        <ul>
         {events
           .filter(event => filters[event.type])
-          .map(event => (
-            <div key={`${event.type}@${event.timeStamp}`}>{event.type}</div>
-        ))}
+          .map(EventItems)}
+        </ul>
       </section>
       <section id="outlet">
         <Outlet/>
