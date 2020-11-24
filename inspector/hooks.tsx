@@ -11,7 +11,7 @@ type State = {
     keypress: boolean;
     input: boolean;
     change: boolean;
-    focus: boolean;
+    focusin: boolean;
   },
   events: Event[];
 };
@@ -24,7 +24,8 @@ function createDefaultAtom() {
     keypress: false,
     input: true,
     change: true,
-    focus: true
+    focusin: true,
+    focusout: false
   };
 
   let stored = localStorage.getItem('keyster/filters')

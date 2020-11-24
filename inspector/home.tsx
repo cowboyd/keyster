@@ -19,7 +19,8 @@ export function Home() {
         <EventFilter eventName={"keypress"} />
         <EventFilter eventName={"input"} />
         <EventFilter eventName={"change"} />
-        <EventFilter eventName={"focus"} />
+        <EventFilter eventName={"focusin"} />
+        <EventFilter eventName={"focusout"} />
       </section>
       <section id="events">
         <h2>Events</h2>
