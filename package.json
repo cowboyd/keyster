@@ -4,7 +4,7 @@
   "description": "Software Keyboard",
   "main": "index.js",
   "scripts": {
-    "inspect": "parcel inspector/index.html",
+    "start": "parcel inspector/index.html",
     "test": "mocha -r ts-node/register test/**/*.test.ts"
   },
   "author": "Charles Lowell <cowboyd@frontside.io>",
