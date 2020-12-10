@@ -1,7 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKeyboard,
-         faEllipsisH,
          faWaveSquare,
          faSearch,
          faArrowCircleUp,
@@ -12,14 +11,18 @@ import { faKeyboard,
          faArrowUp,
          faArrowRight,
          faArrowLeft,
-         faCircle
+         faCircle,
+         faSignInAlt
 } from '@fortawesome/free-solid-svg-icons';
 
-export const EventItems = (event: Event) =>
-  <EventItem key={`${event.type}@${event.timeStamp}`} event={ event } />
+import {
+  isKeyboardEvent,
+  isInputEvent,
+  isChangeEvent,
+  isFocusEvent
+} from './event-utils';
 
-
-function EventItem({ event }: { event: Event }) {
+export function EventItem({ event }: { event: Event }) {
   let element = getElement(event);
   return <li className={"event-item"}>{element}</li>
 }
@@ -43,7 +46,7 @@ function KeyboardEventItem({ event }: { event: KeyboardEvent }) {
     <FontAwesomeIcon icon={ faKeyboard } />
     <FontAwesomeIcon icon={keyIndicatorIcon(event)} />
     {event.key}
-    </>;
+  </>;
 }
 
 function keyIndicatorIcon(event: KeyboardEvent) {
@@ -61,21 +64,24 @@ function keyIndicatorIcon(event: KeyboardEvent) {
 
 function InputEventItem({ event }: { event: InputEvent }) {
   return <>
-  <FontAwesomeIcon icon={ faEllipsisH} />
-  {event.srcElement.id || event.srcElement.type}:{event.data}
-    </>
+  <FontAwesomeIcon icon={ faSignInAlt } />
+  {event.data}
+  </>
 }
 
 function ChangeEventItem({ event }: { event: ChangeEvent }) {
-  return <FontAwesomeIcon icon={ faWaveSquare} />
+  return <>
+    <FontAwesomeIcon icon={ faWaveSquare} />
+    {event.target.id || event.target.type}
+  </>;
 }
 
 function FocusEventItem({ event }: { event: FocusEvent }) {
   return <>
-    <FontAwesomeIcon icon={ faSearch} />
-    <FontAwesomeIcon icon={ focusIndicatorIcon(event)} />
-    {event.srcElement.id || event.srcElement.type}
-    </>
+  <FontAwesomeIcon icon={ faSearch} />
+  <FontAwesomeIcon icon={ focusIndicatorIcon(event)} />
+  {event.srcElement.id || event.srcElement.type}
+  </>
 }
 
 function focusIndicatorIcon(event: FocusEvent) {
@@ -96,13 +102,3 @@ function UnknownEventItem({ event }: { event: Event }) {
     {event.type}
   </>
 }
-
-
-function isEvent<E extends Event>(match: (event: Event) => boolean): (event: Event) => event is E {
-  return evt => !!evt && !!evt.type && match(evt);
-}
-
-const isKeyboardEvent = isEvent<KeyboardEvent>(event => event.type.startsWith('key'));
-const isInputEvent = isEvent<InputEvent>(event => event.type === 'input');
-const isChangeEvent = isEvent<ChangeEvent>(event => event.type === 'change');
-const isFocusEvent = isEvent<FocusEvent>(event => event.type.startsWith('focus'));

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom' ;
+import { Link, Outlet } from 'react-router-dom' ;
 
 import { useSlice } from './hooks';
 import { EventFilter } from './event-filter';
-import { EventItems } from './event-item';
+import { EventItem } from './event-item';
 
 export function Home() {
   let [events] = useSlice<Event[]>('events');
@@ -24,10 +24,14 @@ export function Home() {
       </section>
       <section id="events">
         <h2>Events</h2>
-        <ul>
-        {events
-          .filter(event => filters[event.type])
-          .map(EventItems)}
+        <ul>{
+          Object.entries(events)
+                .filter(([,event]) => filters[event.type])
+                .map(([key, event]) => (
+                  <Link key={key} to={key}>
+                    <EventItem event={event} />
+                  </Link>))
+        }
         </ul>
       </section>
       <section id="outlet">

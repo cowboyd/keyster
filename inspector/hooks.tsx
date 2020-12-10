@@ -12,8 +12,9 @@ type State = {
     input: boolean;
     change: boolean;
     focusin: boolean;
+    focusout: boolean;
   },
-  events: Event[];
+  events: Record<string, Event>;
 };
 
 
@@ -35,7 +36,7 @@ function createDefaultAtom() {
 
   return new Atom<State>({
     filters,
-    events: []
+    events: {}
   });
 }
 
@@ -55,10 +56,10 @@ export function useAtom() {
 }
 
 export function AtomProvider({ children }) {
-  let atom = useMemo(() => createDefaultAtom());
+  let atom = useMemo(() => createDefaultAtom(), []);
 
   useOperation(function*() {
-    yield subscribe(atom.slice('filters')).forEach(function(state) {
+    yield subscribe(atom.slice('filters')).forEach(function*(state) {
       localStorage.setItem('keyster/filters', JSON.stringify(state));
     })
   })
