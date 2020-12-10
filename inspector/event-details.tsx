@@ -4,14 +4,16 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { useSlice } from './hooks';
+
 import {
   isInputEvent,
-  isKeyboardEvent
+  isKeyboardEvent,
+  isChangeEvent
 } from "./event-utils";
 
 export function EventDetails() {
   let { id } = useParams()
-  let [events] = useSlice<UIEvent>('events');
+  let [events] = useSlice<Record<string,UIEvent>>('events');
 
   let json = useMemo(() => {
     let event = events[id];
@@ -60,7 +62,6 @@ function serialize(event: UIEvent): Record<string, unknown> {
     defaultPrevented,
     eventPhase,
     timeStamp,
-    type,
     isTrusted
   };
 
@@ -69,6 +70,7 @@ function serialize(event: UIEvent): Record<string, unknown> {
       //KeyboardEvent
       altKey,
       code,
+      keyCode,
       ctrlKey,
       isComposing,
       key,
@@ -82,6 +84,7 @@ function serialize(event: UIEvent): Record<string, unknown> {
       //KeyboardEvent
       altKey,
       code,
+      keyCode,
       ctrlKey,
       isComposing,
       key,
@@ -108,7 +111,13 @@ function serialize(event: UIEvent): Record<string, unknown> {
       target: event.target.id || event.target.type,
       ...uiAttrs
     };
+  } else if (isChangeEvent(event)) {
+    return {
+      type,
+      target: event.target.id || event.target.type,
+      ...uiAttrs
+    }
   } else {
-    return uiAttrs;
+    return { type, ...uiAttrs };
   }
 }
