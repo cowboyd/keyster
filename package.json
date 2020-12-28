@@ -24,6 +24,7 @@
     "@types/react-inspector": "^4.0.1",
     "@types/react-syntax-highlighter": "^13.5.0",
     "effection": "^0.7.0",
+    "expect": "^26.6.2",
     "mocha": "^8.2.1",
     "parcel": "^2.0.0-beta.1",
     "react": "^16.0.1",
