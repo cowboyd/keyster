@@ -1,9 +1,11 @@
 import { describe, it } from 'mocha';
 import expect from 'expect';
 
-import { rep } from '..';
+import { syntax } from './helpers';
 
-describe('input language', () => {
+const { rep } = syntax;
+
+describe('syntax', () => {
   it('parses per character by default', () => {
     expect(rep("hello world")).toEqual("hello world");
   });
@@ -12,7 +14,11 @@ describe('input language', () => {
     expect(rep("@{hello world}")).toEqual("@{hello world}");
   });
 
-  it.only('can handle whitespace mode list', () => {
+  it('can handle whitespace mode list', () => {
     expect(rep("hello world {I'm  watching}")).toEqual("hello world {I'm watching}")
+  });
+
+  it('handles deeply nested whitespace and raw trees', () => {
+    expect(rep('{+ @{*42}{* 3 2} }')).toEqual('{+ @{*42} {* 3 2}}');
   });
 })

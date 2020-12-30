@@ -45,6 +45,14 @@ describe('tokenize', () => {
       ])
     });
   });
+  describe('nested expressions', () => {
+    it('tokenizes all boundaries', () => {
+      expect(values("{+ @{*42}{* 3 2} }", 'whitespace')).toEqual([
+        '{','+','@{','*42','}','{','*','3','2','}','}'
+      ]);
+    });
+  });
+
 });
 
 function* tokens(source: string, mode: TokenMode) {

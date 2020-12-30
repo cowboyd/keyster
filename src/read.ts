@@ -1,17 +1,9 @@
-import { Token, TokenMode, tokenize } from './src/tokenize';
+import { Token, TokenMode, tokenize } from './tokenize';
 
-export function rep(source: string): string {
-  return print(...evaluate(...read(source)));
-}
-
-export function evaluate(...nodes: AST[]): AST[] {
-  return nodes;
-}
-
-export function read(source: string): AST[] {
+export function read(source: string, initialTokenMode: TokenMode): AST[] {
   let nodes = [] as AST[];
 
-  let mode: TokenMode = 'raw';
+  let mode = initialTokenMode;
 
   let stack = [{
     append: (node: AST) => nodes.push(node),
@@ -69,29 +61,15 @@ export function read(source: string): AST[] {
   return nodes;
 }
 
-export function print(...nodes: AST[]): string {
-  function printAtom(atom: Atom): string {
-    return atom.value;
-  }
+export type AST = List | Atom;
 
-  function printList(list: List): string {
-    let separator = list.raw ? '': ' ';
-    let start = list.raw ? '@{': '{';
-    return `${start}${list.contents.map(node => print(node)).join(separator)}}`;
-  }
-
-  return nodes.map(node => node.type === 'atom' ? printAtom(node) : printList(node)).join('');
-}
-
-type AST = List | Atom;
-
-interface Atom {
+export interface Atom {
   type: 'atom',
   value: string;
   token: Token;
 }
 
-interface List {
+export interface List {
   type: 'list';
   raw: boolean;
   start: Token;

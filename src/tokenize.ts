@@ -46,7 +46,7 @@ export function* tokenize(source: string, initial: TokenMode = 'raw'): Generator
             }
           };
         } else {
-          let nextToken = /^\s*(.*?)(?=\s|{|}|@{|$)/;
+          let nextToken = /^\s*({|@{|}|[^\s]+?(?=@{|\s|}|{|\s|$))/;
           let match  = location.string.match(nextToken);
           if (match === null || match[1] === '') {
             return { done: true, value: undefined };
