@@ -3,13 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import { useSlice } from './hooks';
+import { useSlice } from '../hooks';
 
 import {
   isInputEvent,
   isKeyboardEvent,
   isChangeEvent
-} from "./event-utils";
+} from "../event-utils";
 
 export function EventDetails() {
   let { id } = useParams()
@@ -25,9 +25,9 @@ export function EventDetails() {
   }, [id, events]);
 
   return <>
-    <Link to="/record">Record</Link>
+    <Link to="/">Go back</Link>
     { !event ? <p>No event found with id: {id} </p> :
-      <SyntaxHighlighter key={id} language="json">
+      <SyntaxHighlighter key={id} language="json" style={dark}>
         {json}
       </SyntaxHighlighter>
     }

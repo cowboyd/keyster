@@ -1,0 +1,25 @@
+section#inlet {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+
+  border: 1px yellow solid;
+
+  align-items: flex-end;
+}
+
+section#outlet {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+  overflow: auto;
+
+  border: 1px yellow solid;
+
+  align-items: flex-start;
+  justify-content: center;
+}
+
+section#outlet ul {
+  height: 400px
+}

@@ -20,7 +20,7 @@ import {
   isInputEvent,
   isChangeEvent,
   isFocusEvent
-} from './event-utils';
+} from '../event-utils';
 
 export function EventItem({ event }: { event: Event }) {
   let element = getElement(event);

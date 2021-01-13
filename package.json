@@ -25,6 +25,7 @@
     "@types/react-syntax-highlighter": "^13.5.0",
     "effection": "^0.7.0",
     "expect": "^26.6.2",
+    "history": "^5.0.0",
     "mocha": "^8.2.1",
     "parcel": "^2.0.0-beta.1",
     "react": "^16.0.1",
