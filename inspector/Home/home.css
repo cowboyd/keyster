@@ -10,13 +10,13 @@ section#output {
   display: flex;
   flex: 1;
   
-  height: 55%;
+  height: 70%;
 }
 
 #output ul {
   overflow: hidden;
   align-items: flex-start;
-  padding: 0px 25px;
+  padding: 0px 30px;
 }
 
 #output ul a {

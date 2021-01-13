@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { atomDark as dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { useSlice } from '../hooks';
 
@@ -10,6 +10,8 @@ import {
   isKeyboardEvent,
   isChangeEvent
 } from "../event-utils";
+
+import './details.css';
 
 export function EventDetails() {
   let { id } = useParams()
@@ -24,16 +26,21 @@ export function EventDetails() {
     }
   }, [id, events]);
 
-  return <>
-    <Link to="/">Go back</Link>
-    { !event ? <p>No event found with id: {id} </p> :
-      <SyntaxHighlighter key={id} language="json" style={dark}>
-        {json}
-      </SyntaxHighlighter>
-    }
-  </>;
-}
-
+  return (
+    <div className="details">
+      { !event ? <p>No event found with id: {id} </p> :
+        <SyntaxHighlighter key={id} language="json" style={dark}>
+          {json}
+        </SyntaxHighlighter>
+      }
+      <Link to="/">
+        <button>
+          RETURN ⏎
+        </button>
+      </Link>
+    </div>
+  );
+};
 
 function serialize(event: UIEvent): Record<string, unknown> {
   let { type  } = event;
