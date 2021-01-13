@@ -1,14 +1,12 @@
-section#inlet {
+#inlet {
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
 
-  border: 1px yellow solid;
-
   align-items: flex-end;
 }
 
-section#outlet {
+#outlet {
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
@@ -20,6 +18,6 @@ section#outlet {
   justify-content: center;
 }
 
-section#outlet ul {
+#outlet ul {
   height: 400px
 }

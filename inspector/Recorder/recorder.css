@@ -4,10 +4,52 @@
   align-items: center;
 }
 
-#resetbutton {
+.recorder-label {
+  font-size: 19px;
+}
+
+#event-fields-form {
+  display: flex;
+  align-items: stretch;
+
+  border: 2px silver solid;
+  border-radius: 15px;
+  padding: 15px 10px 25px;
+  margin-bottom: 10px;
+}
+
+#event-fields-form label {
   font-size: 15px;
+  padding: 10px 0px 10px;
+}
+
+#event-fields-form textarea,
+#event-fields-form input {
+  resize: none;
+  padding: 7px;
+  border-radius: 5px;
+  font-size: 15px;
+  height: 100%;
+}
+
+.fields-row {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+
+  padding: 0px 10px;
+}
+
+.textfield {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+}
+
+.reset-button {
+  font-size: 17px;
   padding: 10px 20px;
-  margin: 10px;
+  margin: 20px;
   font-family: inherit;
   border-radius: 10px;
 }

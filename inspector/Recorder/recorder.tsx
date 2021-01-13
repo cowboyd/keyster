@@ -33,29 +33,31 @@ export function Recorder() {
 
   return (
     <div id="recorder">
+      <p className="recorder-label">
+        RECORDER FIELDS
+      </p>
       <form id="event-fields-form">
-        <p>
-          Play around with these fields to see the sequences of events that the browser emits
-        </p>
-        <fieldset>
-          <label htmlFor="field1">Input Text (w/ ref)</label>
-          <input ref={field1} type="text" id="field1"/>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="field2">Input Text (w/o ref)</label>
-          <input type="text" id="field2"/>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="field3">TextArea</label>
+        <div className="fields-row">
+          <div className="textfield">
+            <label htmlFor="field1">Text Input (w/ ref)</label>
+            <input ref={field1} type="text" id="field1"/>
+          </div>
+          <div className="textfield">
+            <label htmlFor="field2">Text Input (w/o ref)</label>
+            <input type="text" id="field2"/>
+          </div>
+        </div>
+        <div className="fields-row">
+          <label htmlFor="field3">Text Area</label>
           <textarea id="field3"></textarea>
-        </fieldset>
+        </div>
       </form>
       <Filters/>
       <button 
         onClick={() => events.set([])} 
         type="reset" 
         form="event-fields-form"
-        id="resetbutton"
+        className="reset-button"
       >
         RESET
       </button>

@@ -1,15 +1,14 @@
-section#filters {
+section .filters {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 
-#filterlabel {
-  text-decoration: none;
-  margin-bottom: 5px;
+.filter-label {
+  margin-bottom: 10px;
 }
 
-#filterbox {
+.filter-box {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -19,18 +18,12 @@ section#filters {
   padding: 10px 25px;
 }
 
-#filterrow1 {
+.filter-rows {
   display: flex;
   flex-flow: row nowrap;
   flex: 1;
 }
 
-#filterrow2 {
-  display: flex;
-  flex-flow: row nowrap;
-  flex: 1;
-}
-
-#filter {
+.filter {
   padding: 10px 15px;
 }
