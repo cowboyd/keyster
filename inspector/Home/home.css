@@ -1,4 +1,4 @@
-#inlet {
+section#input {
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
@@ -6,18 +6,29 @@
   align-items: flex-end;
 }
 
-#outlet {
+section#output {
   display: flex;
-  flex-flow: column nowrap;
   flex: 1;
-  overflow: auto;
-
-  border: 1px yellow solid;
-
-  align-items: flex-start;
-  justify-content: center;
+  
+  height: 55%;
 }
 
-#outlet ul {
-  height: 400px
+#output ul {
+  overflow: hidden;
+  align-items: flex-start;
+  padding: 0px 25px;
+}
+
+#output ul a {
+  color: skyblue;
+  text-decoration: none;
+}
+
+#output ul a:visited {
+  color: hotpink;
+}
+
+#output ul a li {
+  list-style-type: '';
+  margin-bottom: 7px;
 }

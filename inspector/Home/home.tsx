@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom' ;
+import { Outlet, Link } from 'react-router-dom' ;
 
 import { useSlice } from '../hooks';
 import { EventItem } from './event-item';
@@ -13,10 +13,10 @@ export function Home() {
 
   return (
     <>
-      <section id="inlet">
+      <section id="input">
         <Outlet/>
       </section>
-      <section id="outlet">
+      <section id="output">
         <ul>{
           Object.entries(events)
                 .filter(([,event]) => filters[event.type])
@@ -24,8 +24,9 @@ export function Home() {
                 .reverse()
                 .map(([key, event]) => (
                   <Link key={key} to={key}>
-                    <EventItem event={event} />
-                  </Link>))}
+                    <EventItem event={event} key={key} />
+                  </Link>
+                ))}
         </ul>
       </section>
     </>

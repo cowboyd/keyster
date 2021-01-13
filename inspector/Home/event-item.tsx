@@ -44,7 +44,9 @@ function getElement(event: Event) {
 function KeyboardEventItem({ event }: { event: KeyboardEvent }) {
   return <>
     <FontAwesomeIcon icon={ faKeyboard } />
+    {' '}
     <FontAwesomeIcon icon={keyIndicatorIcon(event)} />
+    {' '}
     {event.key}
   </>;
 }
@@ -65,6 +67,7 @@ function keyIndicatorIcon(event: KeyboardEvent) {
 function InputEventItem({ event }: { event: InputEvent }) {
   return <>
   <FontAwesomeIcon icon={ faSignInAlt } />
+  {' '}
   {event.data}
   </>
 }
@@ -72,6 +75,7 @@ function InputEventItem({ event }: { event: InputEvent }) {
 function ChangeEventItem({ event }: { event: ChangeEvent }) {
   return <>
     <FontAwesomeIcon icon={ faWaveSquare} />
+    {' '}
     {event.target.id || event.target.type}
   </>;
 }
@@ -79,7 +83,9 @@ function ChangeEventItem({ event }: { event: ChangeEvent }) {
 function FocusEventItem({ event }: { event: FocusEvent }) {
   return <>
   <FontAwesomeIcon icon={ faSearch} />
+  {' '}
   <FontAwesomeIcon icon={ focusIndicatorIcon(event)} />
+  {' '}
   {event.srcElement.id || event.srcElement.type}
   </>
 }
@@ -99,6 +105,7 @@ function focusIndicatorIcon(event: FocusEvent) {
 function UnknownEventItem({ event }: { event: Event }) {
   return <>
     <FontAwesomeIcon icon={ faQuestionCircle} />
+    {' '}
     {event.type}
   </>
 }
