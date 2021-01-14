@@ -1,6 +1,6 @@
 import React from 'react';
 import { main, Operation, Context } from 'effection';
-import { useMemo, useEffect, useContext, useRef, useState, createContext } from 'react';
+import { useMemo, useEffect, useContext, useState, createContext } from 'react';
 import { Atom, Slice } from '@bigtest/atom';
 import { subscribe } from '@effection/subscription';
 
@@ -16,7 +16,6 @@ type State = {
   },
   events: Record<string, Event>;
 };
-
 
 function createDefaultAtom() {
   let defaultFilters = {

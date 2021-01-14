@@ -1,0 +1,34 @@
+section#input {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+
+  align-items: flex-end;
+}
+
+section#output {
+  display: flex;
+  flex: 1;
+  
+  height: 70%;
+}
+
+#output ul {
+  overflow: hidden;
+  align-items: flex-start;
+  padding: 0px 30px;
+}
+
+#output ul a {
+  color: skyblue;
+  text-decoration: none;
+}
+
+#output ul a:visited {
+  color: hotpink;
+}
+
+#output ul a li {
+  list-style-type: '';
+  margin-bottom: 7px;
+}

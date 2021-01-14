@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import { AtomProvider } from './hooks';
-import { App } from './app';
+import { Routes } from './routes';
 
 ReactDOM.render(
   <BrowserRouter>
     <AtomProvider>
-      <App/>
+      <Routes />
     </AtomProvider>
   </BrowserRouter>, document.getElementById('app-element'));

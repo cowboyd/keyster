@@ -1,0 +1,29 @@
+.filters {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.filter-label {
+  margin-bottom: 10px;
+}
+
+.filter-box {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  border: 2px silver solid;
+  border-radius: 15px;
+  padding: 10px 25px;
+}
+
+.filter-rows {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1;
+}
+
+.filter {
+  padding: 10px 15px;
+}
